@@ -36,6 +36,7 @@ public class ZombieController : MonoBehaviour {
 	void Update ()
     {
         Vector3 playerPosition = player.position;
+        playerPosition.y -= 0.5f;
         Vector3 targetDir = playerPosition - transform.position;
         Vector3 position = Vector3.MoveTowards(transform.position, playerPosition, speed);
         Vector3 rotation = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0f);
