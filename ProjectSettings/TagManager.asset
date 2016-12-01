@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickup
   - Zombie
+  - ZombieMain
   layers:
   - Default
   - TransparentFX

@@ -158,7 +158,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100088, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
-      value: Zombie
+      value: ZombieMain
       objectReference: {fileID: 0}
     - target: {fileID: 100072, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
@@ -336,6 +336,7 @@ MonoBehaviour:
   speed: 3
   scoreText: {fileID: 1561905795}
   winText: {fileID: 1361021533}
+  camera: {fileID: 1404035269}
 --- !u!54 &105095980
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100088, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
-      value: Zombie
+      value: ZombieMain
       objectReference: {fileID: 0}
     - target: {fileID: 100072, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
@@ -1962,6 +1963,7 @@ GameObject:
   - component: {fileID: 1404035268}
   - component: {fileID: 1404035267}
   - component: {fileID: 1404035266}
+  - component: {fileID: 1404035271}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2037,6 +2039,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 20.857, z: 0}
+--- !u!114 &1404035271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1404035265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9410fdd7db188e24096aec6a8764f31e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 105095974}
+  distance: 4
+  height: 2
 --- !u!1 &1421079673 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100064, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
@@ -2620,7 +2636,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100088, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
-      value: Zombie
+      value: ZombieMain
       objectReference: {fileID: 0}
     - target: {fileID: 100072, guid: 8141a1e3f5562ba4d910d6c02d5d213c, type: 3}
       propertyPath: m_TagString
