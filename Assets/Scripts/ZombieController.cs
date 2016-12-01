@@ -30,7 +30,7 @@ public class ZombieController : MonoBehaviour {
         terrainPosZ = (int)terrain.transform.position.z;
 
         //Find random start location
-        rb.MovePosition(FindNewPositionNearPlayer());
+        //rb.MovePosition(FindNewPositionNearPlayer());
 
         speed = Random.Range(0.01f, maxSpeed);
     }
