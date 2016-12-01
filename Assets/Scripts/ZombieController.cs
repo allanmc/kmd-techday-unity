@@ -58,7 +58,10 @@ public class ZombieController : MonoBehaviour {
 
     Vector3 FindNewPositionNearPlayer()
     {
-        Vector3 startPos = Random.insideUnitSphere * 20f;
+        Vector3 startPos = Random.insideUnitSphere * 15f;
+        startPos.x += startPos.x < 0 ? -5f : 5f;
+        startPos.z += startPos.z < 0 ? -5f : 5f;
+
         // generate random z position
         Vector3 newPosition = new Vector3(player.position.x + startPos.x, 0.0f, player.position.z + startPos.z);
 
