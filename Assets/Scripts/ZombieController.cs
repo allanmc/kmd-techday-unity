@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ZombieController : MonoBehaviour {
 
-    public float speed;
+    public float maxSpeed = 0.05f;
+    private float speed;
     Animator anim;
     private Rigidbody rb;
     public Terrain terrain;
@@ -30,6 +31,8 @@ public class ZombieController : MonoBehaviour {
 
         //Find random start location
         rb.MovePosition(FindNewPositionNearPlayer());
+
+        speed = Random.Range(0.01f, maxSpeed);
     }
 	
 	// Update is called once per frame
@@ -39,10 +42,13 @@ public class ZombieController : MonoBehaviour {
         playerPosition.y -= 0.5f;
         Vector3 targetDir = playerPosition - transform.position;
         Vector3 position = Vector3.MoveTowards(transform.position, playerPosition, speed);
-        Vector3 rotation = Vector3.RotateTowards(transform.forward, targetDir, speed, 0.0f);
+        Vector3 rotation = Vector3.RotateTowards(transform.forward, targetDir, 0.1f, 0.0f);
 
-        rb.MovePosition(position);
-        rb.MoveRotation(Quaternion.LookRotation(rotation));
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("walk"))
+        {
+            rb.MovePosition(position);
+            rb.MoveRotation(Quaternion.LookRotation(rotation));
+        }
     }
 
     Vector3 FindNewTerrainPosition()
