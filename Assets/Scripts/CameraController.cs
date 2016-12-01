@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
 
     public GameObject player;
     private Vector3 offset;
+    public float distance = 2.0f;
 
     // Use this for initialization
     void Start()
@@ -16,7 +17,7 @@ public class CameraController : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = player.transform.position + offset;
-
+        transform.position = player.transform.position - player.GetComponent<Rigidbody>().velocity.normalized * distance;
+        transform.LookAt(player.transform);
     }
 }

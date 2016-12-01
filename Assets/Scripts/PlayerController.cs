@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed;
     private Rigidbody rb;
+    public Camera camera;
 
 	// Use this for initialization
 	void Start () {
