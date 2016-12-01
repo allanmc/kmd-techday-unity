@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour {
         }
 
         Vector3 position = player.transform.position - direction * distance;
-        position.y += height;
+        position.y = height;
         transform.position = position;
         transform.LookAt(player.transform);
     }
