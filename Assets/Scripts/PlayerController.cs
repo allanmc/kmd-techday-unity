@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     const string PICKUP_TAG = "Pickup";
     const string ZOMBIE_TAG = "Zombie";
+    const string ZOMBIE_MAIN_TAG = "ZombieMain";
 
     public float speed;
     public Text scoreText;
@@ -16,16 +17,24 @@ public class PlayerController : MonoBehaviour {
     private int score;
     private int totalPickups;
 
+    private List<Animator> zombieAnimators;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
         score = 0;
-        UpdateScore();
+        UpdateScoreText();
+        winText.text = "";
 
         var getCount = GameObject.FindGameObjectsWithTag(PICKUP_TAG);
         totalPickups = getCount.Length;
 
-        winText.text = "";
+        zombieAnimators = new List<Animator>();
+        var zombies = GameObject.FindGameObjectsWithTag(ZOMBIE_MAIN_TAG);
+        foreach (var zombie in zombies)
+        {
+            zombieAnimators.Add(zombie.GetComponent<Animator>());
+        }
     }
 	
 	// Update is called once per frame
@@ -44,9 +53,7 @@ public class PlayerController : MonoBehaviour {
         switch (other.gameObject.tag) {
             case PICKUP_TAG:
                 other.gameObject.SetActive(false);
-                score++;
-                UpdateScore();
-                CheckWinConditions();
+                incrementScore();
                 break;
             case ZOMBIE_TAG:
                 LoseGame();
@@ -60,7 +67,32 @@ public class PlayerController : MonoBehaviour {
         OnTriggerEnter(collision.collider);
     }
 
-    void UpdateScore()
+    void incrementScore()
+    {
+        score++;
+        UpdateScoreText();
+        CheckWinConditions();
+        DropZombies();
+        RaiseZombies();
+    }
+
+    void DropZombies()
+    {
+        foreach(var animator in zombieAnimators)
+        {
+            animator.Play("back_fall");
+        }
+    }
+
+    void RaiseZombies()
+    {
+        foreach (var animator in zombieAnimators)
+        {
+            animator.Play("walk");
+        }
+    }
+
+    void UpdateScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
     }
@@ -75,6 +107,8 @@ public class PlayerController : MonoBehaviour {
 
     void LoseGame()
     {
-        winText.text = "Ha Ha! You is Losar!";
+        winText.text = "Ha Ha! You is Lose!";
+        this.gameObject.SetActive(false);
     }
+
 }
