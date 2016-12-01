@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour {
         if (score >= totalPickups)
         {
             winText.text = "You is Winnar!";
+            this.gameObject.SetActive(false);
         }
     }
 
