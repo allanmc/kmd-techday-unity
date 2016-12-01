@@ -10,10 +10,9 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     public Text scoreText;
     public Text winText;
-
-    private Rigidbody rb;
     public Camera camera;
 
+    private Rigidbody rb;
     private int score;
     private int totalPickups;
 
